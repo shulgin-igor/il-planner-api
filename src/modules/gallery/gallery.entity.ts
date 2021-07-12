@@ -1,11 +1,12 @@
 import {
   Column,
   Entity,
-  JoinColumn,
-  OneToOne,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Complex } from '../complexes/complex.entity';
+import { GalleryItem } from './gallery_item.entity';
 
 @Entity()
 export class Gallery {
@@ -15,7 +16,9 @@ export class Gallery {
   @Column()
   title: string;
 
-  @OneToOne(() => Complex)
-  @JoinColumn()
+  @ManyToOne(() => Complex)
   complex: Complex;
+
+  @OneToMany(() => GalleryItem, (i) => i.gallery)
+  items: GalleryItem;
 }

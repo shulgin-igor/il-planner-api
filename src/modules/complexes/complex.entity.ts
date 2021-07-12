@@ -1,5 +1,6 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Payment } from '../payments/payment.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { ComplexSpec } from './complex_specs.entity';
+import { Gallery } from '../gallery/gallery.entity';
 
 @Entity()
 export class Complex {
@@ -12,6 +13,9 @@ export class Complex {
   @Column()
   address: string;
 
-  @ManyToOne(() => Payment)
-  payments: Payment[];
+  @OneToMany(() => ComplexSpec, (s) => s.complex)
+  specs: ComplexSpec[];
+
+  @OneToMany(() => Gallery, (g) => g.complex)
+  gallery: Gallery[];
 }

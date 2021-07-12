@@ -2,6 +2,8 @@ import {
   Column,
   Entity,
   JoinColumn,
+  ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -13,12 +15,10 @@ export class ComplexSpec {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(() => Complex)
-  @JoinColumn()
+  @ManyToOne(() => Complex)
   complex: Complex;
 
-  @OneToOne(() => Spec)
-  @JoinColumn()
+  @ManyToOne(() => Spec)
   spec: Spec;
 
   @Column()

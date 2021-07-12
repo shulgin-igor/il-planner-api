@@ -1,10 +1,4 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Gallery } from './gallery.entity';
 
 @Entity()
@@ -18,7 +12,6 @@ export class GalleryItem {
   @Column()
   url: string;
 
-  @OneToOne(() => Gallery)
-  @JoinColumn()
+  @ManyToOne(() => Gallery)
   gallery: Gallery;
 }

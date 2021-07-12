@@ -2,11 +2,14 @@ import {
   Column,
   Entity,
   JoinColumn,
+  ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '../users/user.entity';
 import { Planning } from './planning.entity';
+import { Payment } from '../payments/payment.entity';
 
 @Entity()
 export class Apartment {
@@ -16,11 +19,13 @@ export class Apartment {
   @Column()
   floor: number;
 
-  @OneToOne(() => User)
-  @JoinColumn()
+  @ManyToOne(() => User)
   user: User;
 
   @OneToOne(() => Planning)
   @JoinColumn()
   planning: Planning;
+
+  @OneToMany(() => Payment, (p) => p.apartment)
+  payments: Payment[];
 }

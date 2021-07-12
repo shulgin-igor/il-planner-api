@@ -6,7 +6,6 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '../users/user.entity';
-import { Complex } from '../complexes/complex.entity';
 import { Apartment } from '../apartments/apartment.entity';
 
 @Entity()
@@ -19,9 +18,6 @@ export class Payment {
 
   @Column()
   date: Date;
-
-  @OneToOne(() => Complex, (c) => c.payments)
-  complex: Complex;
 
   @OneToOne(() => Apartment)
   @JoinColumn()

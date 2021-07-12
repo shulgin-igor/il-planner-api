@@ -12,7 +12,7 @@ export class HomeService {
   getComplexes(userId: number): Promise<any> {
     return this.apartmentRepository.find({
       where: { user: { id: userId } },
-      relations: ['planning', 'planning.complex', 'planning.complex.payments'],
+      relations: ['planning', 'planning.complex', 'payments'],
     });
   }
 }
