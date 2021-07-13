@@ -17,6 +17,9 @@ export class Payment {
   amount: number;
 
   @Column()
+  metersAmount: number;
+
+  @Column()
   date: Date;
 
   @OneToOne(() => Apartment)

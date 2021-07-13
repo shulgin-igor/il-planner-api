@@ -19,6 +19,9 @@ export class Apartment {
   @Column()
   floor: number;
 
+  @Column()
+  number: number;
+
   @ManyToOne(() => User)
   user: User;
 
