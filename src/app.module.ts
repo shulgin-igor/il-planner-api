@@ -8,7 +8,6 @@ import { ComplexesModule } from './modules/complexes/complexes.module';
 import { GalleryModule } from './modules/gallery/gallery.module';
 import { DevelopersModule } from './modules/developers/developers.module';
 import { ApartmentsModule } from './modules/apartments/apartments.module';
-import { HomeModule } from './modules/home/home.module';
 import { PaymentsModule } from './modules/payments/payments.module';
 
 @Module({
@@ -20,7 +19,6 @@ import { PaymentsModule } from './modules/payments/payments.module';
     GalleryModule,
     DevelopersModule,
     ApartmentsModule,
-    HomeModule,
     PaymentsModule,
   ],
   controllers: [AppController],

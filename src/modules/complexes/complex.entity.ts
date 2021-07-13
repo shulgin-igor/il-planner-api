@@ -1,6 +1,15 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { ComplexSpec } from './complex_specs.entity';
 import { Gallery } from '../gallery/gallery.entity';
+import { Developer } from '../developers/developer.entity';
 
 @Entity()
 export class Complex {
@@ -18,4 +27,8 @@ export class Complex {
 
   @OneToMany(() => Gallery, (g) => g.complex)
   gallery: Gallery[];
+
+  @ManyToMany(() => Developer)
+  @JoinTable()
+  developers: Developer[];
 }

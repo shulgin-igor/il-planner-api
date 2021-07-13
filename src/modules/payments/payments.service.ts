@@ -10,10 +10,9 @@ export class PaymentsService {
     private readonly paymentsRepository: Repository<Payment>,
   ) {}
 
-  getUserPayments(userId: number, apartmentId: number): Promise<Payment[]> {
+  getUserPayments(apartmentId: number): Promise<Payment[]> {
     return this.paymentsRepository.find({
       where: {
-        user: { id: userId },
         apartment: { id: apartmentId },
       },
     });
