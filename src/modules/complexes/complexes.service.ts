@@ -11,7 +11,14 @@ export class ComplexesService {
   ) {}
   getById(id: number) {
     return this.complexRepository.findOne(id, {
-      relations: ['specs', 'specs.spec', 'gallery', 'developers'],
+      relations: [
+        'specs',
+        'specs.spec',
+        'gallery',
+        'gallery.items',
+        'developers',
+        'stages',
+      ],
     });
   }
 }

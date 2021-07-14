@@ -16,7 +16,7 @@ export class Payment {
   @Column()
   amount: number;
 
-  @Column()
+  @Column({ type: 'float' })
   metersAmount: number;
 
   @Column()

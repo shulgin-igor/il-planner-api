@@ -1,8 +1,10 @@
 import {
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Complex } from '../complexes/complex.entity';
@@ -20,5 +22,5 @@ export class Gallery {
   complex: Complex;
 
   @OneToMany(() => GalleryItem, (i) => i.gallery)
-  items: GalleryItem;
+  items: GalleryItem[];
 }
