@@ -12,7 +12,7 @@ export class ApartmentsService {
   getUserApartments(userId: number) {
     return this.apartmentRepository.find({
       where: { user: { id: userId } },
-      relations: ['planning', 'planning.complex', 'payments'],
+      relations: ['planning', 'planning.complex', 'payments', 'stage'],
     });
   }
 }

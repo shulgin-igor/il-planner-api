@@ -1,15 +1,14 @@
 import {
   Column,
   Entity,
-  JoinColumn,
   ManyToOne,
   OneToMany,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '../users/user.entity';
 import { Planning } from './planning.entity';
 import { Payment } from '../payments/payment.entity';
+import { Stage } from '../complexes/stage.entity';
 
 @Entity()
 export class Apartment {
@@ -25,9 +24,11 @@ export class Apartment {
   @ManyToOne(() => User)
   user: User;
 
-  @OneToOne(() => Planning)
-  @JoinColumn()
+  @ManyToOne(() => Planning)
   planning: Planning;
+
+  @ManyToOne(() => Planning)
+  stage: Stage;
 
   @OneToMany(() => Payment, (p) => p.apartment)
   payments: Payment[];
