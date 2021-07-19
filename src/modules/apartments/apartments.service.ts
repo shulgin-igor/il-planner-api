@@ -9,10 +9,17 @@ export class ApartmentsService {
     @InjectRepository(Apartment)
     private readonly apartmentRepository: Repository<Apartment>,
   ) {}
+
   getUserApartments(userId: number) {
     return this.apartmentRepository.find({
       where: { user: { id: userId } },
       relations: ['planning', 'planning.complex', 'payments', 'stage'],
+    });
+  }
+
+  getApartment(id: number) {
+    return this.apartmentRepository.findOne(id, {
+      relations: ['stage', 'planning', 'planning.images'],
     });
   }
 }

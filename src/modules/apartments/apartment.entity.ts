@@ -27,7 +27,7 @@ export class Apartment {
   @ManyToOne(() => Planning)
   planning: Planning;
 
-  @ManyToOne(() => Planning)
+  @ManyToOne(() => Stage)
   stage: Stage;
 
   @OneToMany(() => Payment, (p) => p.apartment)

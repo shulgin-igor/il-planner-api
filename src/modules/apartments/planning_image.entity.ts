@@ -1,10 +1,4 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Planning } from './planning.entity';
 
 @Entity()
@@ -15,7 +9,6 @@ export class PlanningImage {
   @Column()
   url: string;
 
-  @OneToOne(() => Planning)
-  @JoinColumn()
+  @ManyToOne(() => Planning)
   planning: number;
 }
