@@ -9,6 +9,7 @@ import { GalleryModule } from './modules/gallery/gallery.module';
 import { DevelopersModule } from './modules/developers/developers.module';
 import { ApartmentsModule } from './modules/apartments/apartments.module';
 import { PaymentsModule } from './modules/payments/payments.module';
+import { NewsModule } from './modules/news/news.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { PaymentsModule } from './modules/payments/payments.module';
     DevelopersModule,
     ApartmentsModule,
     PaymentsModule,
+    NewsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
