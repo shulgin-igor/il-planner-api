@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Payment } from './payment.entity';
 import { Repository } from 'typeorm';
 import { InstallmentPlan } from './installment_plan.entity';
+import { Price } from './price.entity';
 
 @Injectable()
 export class PaymentsService {
@@ -11,6 +12,8 @@ export class PaymentsService {
     private readonly paymentsRepository: Repository<Payment>,
     @InjectRepository(InstallmentPlan)
     private readonly installmentPlanRepository: Repository<InstallmentPlan>,
+    @InjectRepository(Price)
+    private readonly pricesRepository: Repository<Price>,
   ) {}
 
   getUserPayments(apartmentId: number): Promise<Payment[]> {
@@ -25,5 +28,9 @@ export class PaymentsService {
     return this.installmentPlanRepository.findOne({
       apartment: { id: apartmentId },
     });
+  }
+
+  getActualPrice(apartmentId: number) {
+    return this.pricesRepository.findOne({ apartment: { id: apartmentId } });
   }
 }

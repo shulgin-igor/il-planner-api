@@ -13,7 +13,9 @@ export class PaymentsController {
     const installmentPlan = await this.paymentsService.getInstallmentPlan(
       apartmentId,
     );
+    const price =
+      (await this.paymentsService.getActualPrice(apartmentId)) || null;
 
-    return { payments, installmentPlan };
+    return { payments, installmentPlan, price };
   }
 }
