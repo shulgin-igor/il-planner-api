@@ -1,6 +1,14 @@
-import { Controller, Get, Param, Req, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt.guard';
 import { ApartmentsService } from './apartments.service';
+import { UserApartmentGuard } from './user-apartment.guard';
 
 @Controller('apartments')
 export class ApartmentsController {
@@ -13,7 +21,8 @@ export class ApartmentsController {
   }
 
   @Get(':id')
-  view(@Param('id') id: number) {
+  @UseGuards(JwtAuthGuard, UserApartmentGuard)
+  view(@Param('id', ParseIntPipe) id: number) {
     return this.apartmentsService.getApartment(id);
   }
 }

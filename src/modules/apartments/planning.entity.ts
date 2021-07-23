@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { Complex } from '../complexes/complex.entity';
 import { PlanningImage } from './planning_image.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class Planning {
@@ -24,4 +25,8 @@ export class Planning {
 
   @OneToMany(() => PlanningImage, (i) => i.planning)
   images: PlanningImage[];
+
+  @Exclude()
+  @Column()
+  complexId: number;
 }

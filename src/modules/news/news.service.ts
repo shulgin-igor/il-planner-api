@@ -12,7 +12,7 @@ export class NewsService {
   getComplexNews(complexId: number): Promise<News[]> {
     return this.newsRepository.find({
       where: { complex: { id: complexId } },
-      select: ['id', 'title'],
+      select: ['id', 'title', 'createdAt'],
     });
   }
 

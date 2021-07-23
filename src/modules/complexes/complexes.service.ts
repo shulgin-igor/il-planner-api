@@ -9,6 +9,7 @@ export class ComplexesService {
     @InjectRepository(Complex)
     private readonly complexRepository: Repository<Complex>,
   ) {}
+
   getById(id: number) {
     return this.complexRepository.findOne(id, {
       relations: [

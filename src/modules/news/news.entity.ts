@@ -14,4 +14,7 @@ export class News {
 
   @ManyToOne(() => Complex)
   complex: Complex;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: string;
 }
